@@ -1,0 +1,12 @@
+/* Write your CSS code here */
+.list {
+  list-style-type: none;
+  display: flex;
+  padding: 10px;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
