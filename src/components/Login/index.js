@@ -1,15 +1,17 @@
 // Write your JS code here
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
+
 import Cookies from 'js-cookie'
 import './index.css'
 
 class Login extends Component {
   state = {username: 'rahul', password: 'rahul@2021'}
 
-  onSubmitSuccess = jwtTkoken => {
+  onSubmitSuccess = jwtToken => {
     const {history} = this.props
 
-    Cookies.set('jwt_token', jwtTkoken, {
+    Cookies.set('jwt_token', jwtToken, {
       expires: 30,
       path: '/',
     })
@@ -32,6 +34,11 @@ class Login extends Component {
   }
 
   render() {
+    const token = Cookies.get('jwt_token')
+    if (token !== undefined) {
+      return <Redirect to="/" />
+    }
+
     return (
       <>
         <div className="login">
